@@ -21,9 +21,7 @@ class FirebaseService {
         credential: Credentials.applicationDefault()!
         
         ,
-        // credential: Credentials. fromJson(
-        //   json.decode(<your-service-account-json-here>),
-        // ),
+        
       ),
     );
   }
@@ -72,9 +70,7 @@ class FirebaseService {
       const firebaseMessagingScope =
           'https://www.googleapis.com/auth/firebase.messaging';
 
-      //get the service account from the environment variables or from the .env file where it has been stored.
-      //it is advised not to hardcode the service account details in the code
-     
+   
       final client = await clientViaServiceAccount(
           ServiceAccountCredentials(
             env['CLIENT_EMAIL'].toString(),
