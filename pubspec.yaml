@@ -16,6 +16,7 @@ dependencies:
   dart_frog_auth:
   firebase_admin: ^0.3.0
   googleapis_auth: ^1.6.0
+  dotenv: ^4.2.0
 
 dev_dependencies:
   mocktail: ^1.0.3

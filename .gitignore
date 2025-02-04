@@ -16,4 +16,4 @@ build/
 coverage/
 
 #lib
-lib/service-account.json
+lib/service-account.json.env*

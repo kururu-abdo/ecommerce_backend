@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dotenv/dotenv.dart';
 import 'package:firebase_admin/firebase_admin.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
@@ -65,6 +66,7 @@ class FirebaseService {
   
 //get the access token with the .json file downloaded from google cloud console
   Future<String> _getAccessToken() async {
+      final env = DotEnv(includePlatformEnvironment: true)..load();
     try {
       //the scope url for the firebase messaging
       const firebaseMessagingScope =
@@ -74,10 +76,10 @@ class FirebaseService {
       //it is advised not to hardcode the service account details in the code
      
       final client = await clientViaServiceAccount(
-          ServiceAccountCredentials.fromJson(
-            {
-   
-  }
+          ServiceAccountCredentials(
+            env['CLIENT_EMAIL'].toString(),
+ClientId(env['CLIENT_ID'].toString()),
+           env['PRIVTE_KEY'].toString(),
           ),
           [firebaseMessagingScope],);
 
