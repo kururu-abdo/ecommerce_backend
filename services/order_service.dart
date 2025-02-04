@@ -42,7 +42,16 @@ class OrderService {
   }
 
 
-
+Future<void> changeOrderStatus(int order ,int status)async{
+  try {
+    final connection =await db.connection;
+ await connection.query('UPDATE  orders SET   status = ? WHERE id = ?' , 
+    [ status, order],
+    );
+  } catch (e) {
+    
+  }
+}
 
 
 Future<Order?> getOrderDetails(int orderId) async {

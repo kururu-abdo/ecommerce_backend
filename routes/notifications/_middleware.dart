@@ -15,6 +15,7 @@ Handler middleware(Handler handler) {
     conn=connection;
    });
   return handler
+  
   .use(requestLogger())
   .use(provider<UserService>((handler)=> UserService()))
     .use(provider<NotificationService>((handler)=> NotificationService()))

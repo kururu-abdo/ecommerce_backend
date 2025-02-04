@@ -8,13 +8,14 @@ Future<Response> onRequest(RequestContext context) async {
 
   final payload = await context.request.json() as Map<String, dynamic>;
 
-  final orderId = payload['orderId'];
+  final orderId = payload['order_id'];
   final status = payload['status'];
 
   if (orderId == null || status == null) {
     return Response.json(statusCode: 400, body: {'error': 'Order ID and status are required'});
   }
 
-  // orderService.updateOrderStatus(orderId, status);
-  return Response.json(body: {'message': 'Order status updated'});
+ await orderService.changeOrderStatus(int.parse(orderId.toString()), int.parse(status.toString()));
+
+  return Response.json(body: {'message': 'Order status updated', 'status':status});
 }
